@@ -65,16 +65,18 @@
 		</dependency>
 		
 		<!-- Throttler dependencies  -->
+		<!-- 
 		<dependency>
 		    <groupId>io.github.resilience4j</groupId>
 		    <artifactId>resilience4j-spring-boot2</artifactId>
-		    <version>1.7.1</version>
+		    <version>1.5.0</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-aop</artifactId>
-		    <version>2.6.3</version>
+		    <version>2.5.4</version>
 		</dependency>
+		 -->
 	</dependencies>
     <dependencyManagement>
 		<dependencies>

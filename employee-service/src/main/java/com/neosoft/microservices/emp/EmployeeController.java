@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import io.github.resilience4j.ratelimiter.RequestNotPermitted;
-import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
@@ -95,7 +93,7 @@ public class EmployeeController {
 		return ResponseEntity.status(HttpStatus.OK).body(emp);
 	}
 	
-	@RateLimiter(name=DATA_SAVE_THROTTLER_SERVICE, fallbackMethod = "dataSaveRateLimiterFallback")
+	//@RateLimiter(name=DATA_SAVE_THROTTLER_SERVICE, fallbackMethod = "dataSaveRateLimiterFallback")
 	@PostMapping
 	public ResponseEntity<String> saveEmployee(
 			@RequestBody Employee emp) {
@@ -132,13 +130,13 @@ public class EmployeeController {
 	
 	
     // Rate Limiter(Throttler) FALLBACK method
-	public ResponseEntity<String> dataSaveRateLimiterFallback(
-			Employee emp, 
-			RequestNotPermitted exception) {
-		log.error("Max request rate limit fallback triggered. Exception: ", exception);
-		
-		return ResponseEntity.status(
-				HttpStatus.TOO_MANY_REQUESTS)
-				.body("Too many requests made! Retry after some time");
-	}
+	/*
+	 * public ResponseEntity<String> dataSaveRateLimiterFallback( Employee emp,
+	 * RequestNotPermitted exception) {
+	 * log.error("Max request rate limit fallback triggered. Exception: ",
+	 * exception);
+	 * 
+	 * return ResponseEntity.status( HttpStatus.TOO_MANY_REQUESTS)
+	 * .body("Too many requests made! Retry after some time"); }
+	 */
 }
